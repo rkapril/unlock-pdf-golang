@@ -1,12 +1,12 @@
 # PDF Unlock
 
-Go program that finds encrypted PDFs and removes the password **in place**. Files that are already open are skipped. A password is requested only when at least one locked file is found. The same password is used for every locked PDF.
+Go program that finds encrypted PDFs and removes the password **in place**. Files that are not encrypted are skipped. A password is requested only when at least one locked file is found. The same password is used for every locked PDF.
 
 ## Double-click
 
 1. Place `pdfunlock.exe` in the folder you want to scan (subfolders are included).
 2. Double-click `pdfunlock.exe`.
-3. Review the list (`locked` vs `already open`).
+3. Review the list (`locked` vs `not encrypted`).
 4. If anything is locked, type the password:
    - **Enter** — unlock
    - **Backspace** — erase

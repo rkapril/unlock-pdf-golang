@@ -92,7 +92,7 @@ func run() error {
 	}
 
 	locked := make([]string, 0)
-	openFiles := make([]string, 0)
+	clearFiles := make([]string, 0)
 	var inspectFailed int
 	for _, path := range pdfs {
 		ok, err := isEncrypted(path)
@@ -102,12 +102,12 @@ func run() error {
 			continue
 		}
 		if ok {
-			fmt.Printf("  locked       %s\n", displayPath(path, cwd))
+			fmt.Printf("  locked         %s\n", displayPath(path, cwd))
 			locked = append(locked, path)
 			continue
 		}
-		fmt.Printf("  already open %s\n", displayPath(path, cwd))
-		openFiles = append(openFiles, path)
+		fmt.Printf("  not encrypted  %s\n", displayPath(path, cwd))
+		clearFiles = append(clearFiles, path)
 	}
 	fmt.Println()
 
@@ -152,7 +152,7 @@ func run() error {
 	}
 
 	failed += inspectFailed
-	fmt.Printf("\ndone: unlocked=%d skipped=%d failed=%d\n", unlocked, len(openFiles), failed)
+	fmt.Printf("\ndone: unlocked=%d not_encrypted=%d failed=%d\n", unlocked, len(clearFiles), failed)
 	if failed > 0 {
 		return fmt.Errorf("%d file(s) failed", failed)
 	}
