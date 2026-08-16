@@ -1,0 +1,13 @@
+# Built program
+*.exe
+
+# Unlocker temp files
+*.unlocked.tmp
+
+# Generated Windows resources (rebuild from versioninfo.json)
+*.syso
+
+# OS
+Thumbs.db
+Desktop.ini
+.DS_Store
