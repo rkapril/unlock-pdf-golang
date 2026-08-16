@@ -1,5 +1,7 @@
 package main
 
+//go:generate go tool goversioninfo -64 -o resource_windows.syso
+
 import (
 	"bufio"
 	"bytes"

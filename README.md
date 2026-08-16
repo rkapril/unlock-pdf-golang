@@ -19,7 +19,7 @@ Unlocked files **replace** the originals only after a successful decrypt.
 
 ## Command line
 
-Requires [Go](https://go.dev/dl/) 1.22 or later.
+Requires [Go](https://go.dev/dl/) 1.24 or later.
 
 ```powershell
 go build -o pdfunlock.exe .
@@ -38,6 +38,17 @@ go run . -password "secret" file.pdf
 Extra arguments are files or folders to process instead of `-dir`.
 
 To hardcode a password, set `defaultPassword` in `main.go` and rebuild.
+
+## Windows file properties
+
+`versioninfo.json` is not read at runtime. After `go generate`, the next `go build` stamps Explorer → Properties → Details. The versioninfo tool is pinned in `go.mod` (no extra install).
+
+```powershell
+go generate
+go build -o pdfunlock.exe .
+```
+
+The `.syso` is gitignored. Unlocking works without this step.
 
 ## Notes
 
